@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doomzi Night – A Private Membership</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4ebe0;--bg2:#fff8ef;--ink:#2a1a12;--mut:#6b5a4c;--gold:#8a5a2b;--on-gold:#fff;--line:#d9c7b0;--err:#a8281f;
+--night:#160f0d;--night2:#231a17;--sand:#c9a67a;--cream:#f4ebe0;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#160f0d;--bg2:#231a17;--ink:#f4ebe0;--mut:#b8a898;--gold:#c9a67a;--on-gold:#160f0d;--line:#3a2c25;--err:#ff9a90;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#160f0d;--bg2:#231a17;--ink:#f4ebe0;--mut:#b8a898;--gold:#c9a67a;--on-gold:#160f0d;--line:#3a2c25;--err:#ff9a90;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:500;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.logo{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.32em;font-size:1.25rem;line-height:1;text-align:center;background:none;border:0;color:inherit;cursor:pointer;padding:0}
+.logo small{display:block;letter-spacing:.6em;font-size:.55rem;margin-top:4px;font-family:Figtree,sans-serif}
+.links{display:flex;gap:22px;align-items:center}
+.links a{text-decoration:none;font-size:.92rem;color:var(--mut)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-block;border:1.5px solid var(--gold);background:var(--gold);color:var(--on-gold);font:inherit;font-weight:600;padding:11px 26px;border-radius:999px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;color:var(--ink)}
+.btn.sm{padding:8px 18px;font-size:.88rem}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media (max-width:640px){.links a{display:none}}
+.hero{background:radial-gradient(circle at 78% 62%,#7a4a22 0,transparent 36%),radial-gradient(circle at 92% 20%,#3d2a22 0,transparent 40%),linear-gradient(120deg,#0f0908,#2b1c15 70%,#4a2f1f);color:var(--cream);position:relative;overflow:hidden}
+.hero .logo{color:var(--cream)}.hero .links a{color:#d8c9b8}.hero .links a:hover{color:#fff}
+.hero .btn{background:var(--sand);border-color:var(--sand);color:#160f0d}.hero .btn.ghost{background:none;color:var(--cream)}
+.hero-in{padding:90px 0 110px;max-width:560px}
+.hero h1{font-size:clamp(2.8rem,8vw,5rem);line-height:.98;letter-spacing:.01em;text-transform:uppercase;margin-bottom:20px}
+.hero p{color:#d8c9b8;max-width:42ch;margin:0 0 28px}
+.hero-in::after{content:"";position:absolute;right:8%;bottom:14%;width:min(340px,40vw);height:min(340px,40vw);border:1px solid rgba(201,166,122,.35);border-radius:50%;box-shadow:0 0 0 40px rgba(201,166,122,.06),0 0 0 90px rgba(201,166,122,.04);pointer-events:none}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:26px 0;border-bottom:1px solid var(--line);text-align:center}
+@media (max-width:640px){.feats{grid-template-columns:repeat(2,1fr)}}
+.feats b{display:block;font-weight:500;font-size:.92rem}
+.feats span{font-size:.82rem;color:var(--mut)}
+section.s{padding:64px 0}
+.eyebrow{font-size:.78rem;color:var(--gold);margin-bottom:6px;font-weight:600}
+h2.t{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:26px}
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.events{grid-template-columns:1fr}}
+.ev{border-radius:14px;min-height:260px;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--cream);background:var(--g)}
+.ev small{color:#d8c9b8}.ev h3{font-size:1.5rem;margin:2px 0}
+.priv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.priv{grid-template-columns:1fr}}
+.pc{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px}
+.pc h3{font-size:1.35rem;margin-bottom:4px}.pc p{margin:0;color:var(--mut);font-size:.92rem}
+.choices{margin-top:14px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px}
+.choice{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.choice p{margin:0;color:var(--mut);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-size:.85rem}
+/* apply flow */
+.flow{max-width:520px;margin:0 auto;padding:30px 0 70px}
+.steps{display:flex;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.steps li{flex:1;font-size:.82rem;color:var(--mut);border-top:3px solid var(--line);padding-top:8px}
+.steps li.on{color:var(--ink);border-color:var(--gold);font-weight:600}
+.flow h2{font-size:2.1rem;text-align:center;margin-bottom:20px}
+.box{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:24px}
+label{display:block;font-size:.86rem;font-weight:600;margin:14px 0 4px}
+input[type=text],input[type=tel],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px}
+input.bad,select.bad{border-color:var(--err)}
+.err{color:var(--err);font-size:.8rem;min-height:1.1em;margin:3px 0 0}
+.phone{display:grid;grid-template-columns:90px 1fr;gap:8px}
+.photo{display:flex;gap:14px;align-items:center}
+.pv{width:72px;height:72px;border-radius:50%;border:1.5px dashed var(--gold);display:grid;place-items:center;overflow:hidden;color:var(--mut);font-size:.7rem;text-align:center;flex:none;background-size:cover;background-position:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;gap:10px;margin-top:16px;font-size:.88rem;align-items:flex-start}
+.check input{margin-top:4px;accent-color:var(--gold);width:17px;height:17px}
+.full{width:100%;margin-top:18px}
+.opt{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
+.opt[aria-checked="true"]{border-color:var(--gold)}
+.opt small{display:block;color:var(--mut)}
+.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.m{font:inherit;color:inherit;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 4px;cursor:pointer;font-weight:600}
+.m[aria-checked="true"]{border-color:var(--gold)}
+.note{font-size:.82rem;color:var(--mut);margin:12px 0 0}
+.tl{list-style:none;margin:22px 0 0;padding:0}
+.tl li{display:flex;gap:14px;padding-bottom:20px;position:relative}
+.tl li::before{content:"";position:absolute;left:8px;top:20px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::before{display:none}
+.tl i{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none;margin-top:3px;background:var(--bg2)}
+.tl .done i{background:var(--gold);border-color:var(--gold)}.tl .now i{border-color:var(--gold);border-width:5px}
+.tl small{display:block;color:var(--mut)}
+.center{text-align:center}
+.mc{border-radius:16px;padding:22px;margin:20px 0;color:#f4ebe0;background:radial-gradient(circle at 20% 0,#8b6039,transparent 55%),linear-gradient(135deg,#3a281d,#1a110d);display:grid;grid-template-columns:1fr auto;gap:14px;text-align:left;box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.mc .logo{text-align:left;color:inherit;font-size:1.1rem;cursor:default}
+.mc p{margin:2px 0;font-size:.82rem;color:#e3d3bf}
+.mc svg{width:84px;height:84px;background:#f4ebe0;padding:5px;border-radius:6px;align-self:end}
+.badge{font-size:.78rem;letter-spacing:.12em;text-align:right}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#160f0d;color:#f4ebe0;padding:12px 20px;border-radius:999px;font-size:.9rem;z-index:20;max-width:90vw;text-align:center}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="home">
+<header class="hero">
+<div class="wrap">
+<nav><button class="logo" data-go="home" aria-label="Doomzi Night home">DOOMZI<small>NIGHT</small></button>
+<div class="links"><a href="#events">Events</a><a href="#privacy">Privacy</a><button class="btn sm" data-go="apply">Join now</button></div></nav>
+<div class="hero-in">
+<h1>More than<br>just a night</h1>
+<p>Doomzi Night offers an exclusive membership to unforgettable private events, curated for a select few.</p>
+<button class="btn" data-go="apply">Become a member</button>
+</div></div>
+</header>
+
+<div class="wrap">
+<div class="feats"><div><b>Private events</b><span>Curated nights</span></div><div><b>Members only</b><span>By approval</span></div><div><b>High privacy</b><span>Your data stays yours</span></div><div><b>Digital card</b><span>QR verified entry</span></div></div>
+
+<section class="s" id="events">
+<div class="eyebrow">Upcoming events</div><h2 class="t">Exclusive nights</h2>
+<div class="events">
+<article class="ev" style="--g:radial-gradient(circle at 50% 20%,#9a4a2a,transparent 50%),linear-gradient(#2a1410,#0d0706)"><small>Dec 5, 2026 · Riyadh</small><h3>Live Music Night</h3><small>Open to approved members</small></article>
+<article class="ev" style="--g:radial-gradient(circle at 70% 30%,#8a6a3a,transparent 55%),linear-gradient(#2a2016,#0d0907)"><small>Dec 12, 2026 · Riyadh</small><h3>Private Dinner</h3><small>Limited seating</small></article>
+<article class="ev" style="--g:radial-gradient(circle at 30% 30%,#6a4a5a,transparent 55%),linear-gradient(#1e1519,#0b0809)"><small>Dec 19, 2026 · Riyadh</small><h3>Special DJ Set</h3><small>Members and one guest</small></article>
+</div></section>
+
+<section class="s" id="privacy" style="border-top:1px solid var(--line)">
+<div class="eyebrow">Privacy and security</div><h2 class="t">Your privacy, our priority</h2>
+<div class="priv">
+<div class="pc"><h3>Private by design</h3><p>Your personal information is never shown publicly.</p></div>
+<div class="pc"><h3>Secure payments</h3><p>Payments are processed by a compliant payment provider. We don’t store card details.</p></div>
+<div class="pc"><h3>Controlled access</h3><p>Only authorized reviewers can see applications.</p></div>
+<div class="pc"><h3>Member identity</h3><p>A digital card with secure QR verification, issued after approval.</p></div>
+</div>
+<div class="choices"><h3 style="font-size:1.5rem">Your choices</h3><p class="note" style="margin:2px 0 8px">You’re in control of your data.</p>
+<div class="choice"><div><b>View your data</b><p>See what information we have about you.</p></div><button class="btn ghost sm" data-toast="Sign in to view your data.">View details</button></div>
+<div class="choice"><div><b>Manage your consent</b><p>Update your preferences any time.</p></div><button class="btn ghost sm" data-toast="Sign in to update your consent.">Update</button></div>
+<div class="choice"><div><b>Request deletion</b><p>Ask us to delete your data, subject to legal retention rules.</p></div><button class="btn ghost sm" data-toast="Sign in to request deletion.">Delete my data</button></div>
+</div></section>
+<footer>© 2026 Doomzi Night. A private world, by invitation and approval.</footer>
+</div>
+</div>
+
+<div id="apply" hidden>
+<div class="wrap">
+<nav><button class="logo" data-go="home" aria-label="Back to home">DOOMZI<small>NIGHT</small></button><button class="btn ghost sm" data-go="home">Back to home</button></nav>
+<div class="flow">
+<ol class="steps" id="steps"><li>1. Registration</li><li>2. Payment</li><li>3. Review</li></ol>
+
+<div id="p1"><h2>Create your membership</h2><div class="box">
+<label for="fn">Full name *</label><input type="text" id="fn" autocomplete="name"><p class="err" id="e-fn"></p>
+<label for="age">Age *</label><select id="age"><option value="">Select age</option></select><p class="err" id="e-age"></p>
+<label for="ph">Mobile number *</label><div class="phone"><select id="cc" aria-label="Country code"><option>+966</option><option>+971</option><option>+965</option><option>+973</option><option>+974</option></select><input type="tel" id="ph" placeholder="5X XXX XXXX" inputmode="numeric" maxlength="12"></div><p class="err" id="e-ph"></p>
+<label>Profile photo *</label><div class="photo"><div class="pv" id="pv">Photo</div><div><input type="file" id="file" accept="image/png,image/jpeg" hidden><button type="button" class="btn ghost sm" id="up">Upload photo</button><p class="note" style="margin:6px 0 0">JPG or PNG, max 5 MB</p></div></div><p class="err" id="e-file"></p>
+<label>Social accounts (optional)</label><div class="two"><input type="text" placeholder="Instagram @username" aria-label="Instagram"><input type="text" placeholder="X @username" aria-label="X"></div><input type="text" placeholder="TikTok @username" aria-label="TikTok" style="margin-top:10px">
+<label class="check"><input type="checkbox" id="ok"><span>I agree to the Terms and Privacy Policy. I understand why my photo and details are collected, how long they are kept, and who can view them.</span></label><p class="err" id="e-ok"></p>
+<button class="btn full" id="to2" type="button">Continue to payment</button></div></div>
+
+<div id="p2" hidden><h2>Membership payment</h2><div class="box">
+<div role="radiogroup" aria-label="Membership type" id="plans">
+<button type="button" class="opt" role="radio" data-p="1500" data-n="Annual membership" aria-checked="true"><span><b>Annual membership</b><small>Full access to all Doomzi Night events for 12 months.</small></span><b>SAR 1,500</b></button>
+<button type="button" class="opt" role="radio" data-p="750" data-n="Event access (limited)" aria-checked="false"><span><b>Event access (limited)</b><small>Access to upcoming private events.</small></span><b>SAR 750</b></button></div>
+<label>Payment method</label><div class="methods" role="radiogroup" aria-label="Payment method" id="meth"><button type="button" class="m" role="radio" aria-checked="true">Card</button><button type="button" class="m" role="radio" aria-checked="false">Apple Pay</button><button type="button" class="m" role="radio" aria-checked="false">mada</button></div>
+<p class="note">You’ll pay on your payment provider’s secure page. Card details never touch this site. No payment is taken in this demo.</p>
+<button class="btn full" id="pay" type="button">Pay SAR 1,500</button>
+<button class="btn ghost full" id="back1" type="button" style="margin-top:10px">Back</button></div></div>
+
+<div id="p3" hidden class="center"><div class="box">
+<div id="rev"><h2 style="font-size:1.9rem">Your application is under review</h2><p class="note" style="font-size:.95rem">We’re reviewing your information and will notify you of the result soon.</p>
+<ul class="tl" style="text-align:left"><li class="done"><i></i><div><b>Application received</b><small id="rd"></small></div></li><li class="now"><i></i><div><b>Under review</b><small>In progress</small></div></li><li><i></i><div><b>Approved or declined</b><small>Pending</small></div></li></ul>
+<button class="btn ghost full" id="demo" type="button">Demo: preview approval</button></div>
+<div id="appr" hidden><h2 style="font-size:1.9rem">Membership approved</h2><p class="note" style="font-size:.95rem">Welcome to Doomzi Night. Your membership has been activated.</p>
+<div class="mc"><div><div class="logo">DOOMZI<small>NIGHT</small></div><p style="margin-top:34px" id="mid"></p><p id="mval"></p></div><div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end"><span class="badge">MEMBER</span><svg id="qr" viewBox="0 0 21 21" shape-rendering="crispEdges" role="img" aria-label="Membership QR code"></svg></div></div>
+<button class="btn full" data-toast="Card download is available on the live site." type="button">Download membership card</button>
+<button class="btn ghost full" data-go="home" type="button" style="margin-top:10px">Back to home</button></div>
+</div></div>
+</div></div></div>
+
+<div class="toast" id="toast" hidden role="status"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var st={price:1500,plan:"Annual membership",photo:false};
+function show(v){$("home").hidden=v!=="home";$("apply").hidden=v!=="apply";window.scrollTo(0,0);if(v==="apply")step(1)}
+document.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){show(b.dataset.go)}});
+var tt;function toast(m){var t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
+document.querySelectorAll("[data-toast]").forEach(function(b){b.onclick=function(){toast(b.dataset.toast)}});
+var a=$("age");for(var i=18;i<=70;i++){var o=document.createElement("option");o.textContent=i;o.value=i;a.appendChild(o)}
+function step(n){["p1","p2","p3"].forEach(function(p,i){$(p).hidden=i!==n-1});
+document.querySelectorAll("#steps li").forEach(function(l,i){l.className=i<n?"on":""});window.scrollTo(0,0)}
+$("up").onclick=function(){$("file").click()};
+$("file").onchange=function(e){var f=e.target.files[0];if(!f)return;
+if(!/^image\/(png|jpeg)$/.test(f.type)||f.size>5242880){st.photo=false;$("pv").style.backgroundImage="";$("pv").textContent="Photo";return er("e-file","file","Use a JPG or PNG under 5 MB.")}
+var r=new FileReader();r.onload=function(){$("pv").style.backgroundImage="url("+r.result+")";$("pv").textContent="";st.photo=true;er("e-file","file","")};r.readAsDataURL(f)};
+function er(id,f,m){$(id).textContent=m||"";var el=$(f);if(el)el.classList.toggle("bad",!!m);return !m}
+$("to2").onclick=function(){var ok=true;
+ok=er("e-fn","fn",$("fn").value.trim().length<2?"Enter your full name.":"")&&ok;
+ok=er("e-age","age",$("age").value?"":"Select your age.")&&ok;
+ok=er("e-ph","ph",/^\d{8,10}$/.test($("ph").value.replace(/\s/g,""))?"":"Enter a valid mobile number.")&&ok;
+if(!st.photo)ok=er("e-file","file","Upload a profile photo.")&&ok;
+ok=er("e-ok",null,$("ok").checked?"":"Accept the terms to continue.")&&ok;
+if(ok)step(2)};
+document.querySelectorAll("#plans .opt").forEach(function(b){b.onclick=function(){document.querySelectorAll("#plans .opt").forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true");st.price=+b.dataset.p;st.plan=b.dataset.n;$("pay").textContent="Pay SAR "+st.price.toLocaleString("en-US")}});
+document.querySelectorAll("#meth .m").forEach(function(b){b.onclick=function(){document.querySelectorAll("#meth .m").forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true")}});
+$("back1").onclick=function(){step(1)};
+var fmt=function(d){return d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
+$("pay").onclick=function(){$("rd").textContent=fmt(new Date());$("rev").hidden=false;$("appr").hidden=true;step(3)};
+function qr(seed){var s=$("qr"),h="",x=seed;function rnd(){x=(x*1664525+1013904223)>>>0;return x/4294967296}
+function fin(ox,oy){return (ox<7&&oy<7)||(ox>13&&oy<7)||(ox<7&&oy>13)}
+for(var y=0;y<21;y++)for(var c=0;c<21;c++){var on;
+if(fin(c,y)){var fx=c>13?c-14:c,fy=y>13?y-14:y;on=fx===0||fx===6||fy===0||fy===6||(fx>=2&&fx<=4&&fy>=2&&fy<=4)}
+else if((c===7||y===7||c===13&&y<8||y===13&&c<8)&&0)on=false;else on=rnd()>.5;
+if(on)h+='<rect x="'+c+'" y="'+y+'" width="1" height="1" fill="#160f0d"/>'}s.innerHTML=h}
+$("demo").onclick=function(){var n=Math.floor(100+Math.random()*900),d=new Date();d.setFullYear(d.getFullYear()+(st.price===1500?1:0));
+if(st.price!==1500)d.setMonth(d.getMonth()+3);
+$("mid").textContent="ID: DN-00"+n;$("mval").textContent="Valid until: "+fmt(d);qr(n*7919);$("rev").hidden=true;$("appr").hidden=false;window.scrollTo(0,0)};
+})();
+</script>
+</body>
+</html>
