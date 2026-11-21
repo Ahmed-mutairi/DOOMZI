@@ -93,6 +93,29 @@ input.bad,select.bad{border-color:var(--err)}
 .mc svg{width:84px;height:84px;background:#f4ebe0;padding:5px;border-radius:6px;align-self:end}
 .badge{font-size:.78rem;letter-spacing:.12em;text-align:right}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#160f0d;color:#f4ebe0;padding:12px 20px;border-radius:999px;font-size:.9rem;z-index:20;max-width:90vw;text-align:center}
+.ev[data-ev]{cursor:pointer}.ev[data-ev]:hover h3{text-decoration:underline}
+.eh{border-radius:18px;min-height:300px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;color:#f4ebe0;margin-top:6px;background:linear-gradient(transparent 30%,rgba(10,6,5,.85)),var(--g)}
+.eh h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1}.eh p{margin:6px 0 0;color:#d8c9b8}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0}
+.fact{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.fact small{display:block;color:var(--mut);font-size:.8rem}.fact b{font-weight:600}
+.evbody{max-width:640px;padding-bottom:70px}.evbody p{color:var(--mut)}
+.lnk{background:none;border:0;color:var(--gold);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;min-height:80px;margin-top:10px}
+.msg{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;text-align:left;font-size:.9rem}
+.msg small{display:block;color:var(--mut);margin-bottom:2px}.msg.bad{border-color:var(--err)}
+.mh{font-size:1.2rem;margin:22px 0 0;text-align:left}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:600;color:#fff;background:#c28a2a;margin-left:6px;vertical-align:middle}
+.s-approved{background:#2f7a4a}.s-rejected{background:#a8281f}.s-paid{background:var(--gold);color:var(--on-gold)}
+.wide{max-width:880px;margin:0 auto;padding:10px 0 70px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tabs button{font:inherit;background:var(--bg2);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;cursor:pointer}
+.tabs button[aria-pressed="true"]{border-color:var(--gold);font-weight:600}
+.acard{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px}
+.ah{display:flex;gap:14px;align-items:flex-start}
+.av{width:64px;height:64px;border-radius:50%;background:var(--line) center/cover;flex:none}
+.acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+footer .lnk{margin-left:10px;font-size:.85rem}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -115,9 +138,9 @@ input.bad,select.bad{border-color:var(--err)}
 <section class="s" id="events">
 <div class="eyebrow">Upcoming events</div><h2 class="t">Exclusive nights</h2>
 <div class="events">
-<article class="ev" style="--g:radial-gradient(circle at 50% 20%,#9a4a2a,transparent 50%),linear-gradient(#2a1410,#0d0706)"><small>Dec 5, 2026 · Riyadh</small><h3>Live Music Night</h3><small>Open to approved members</small></article>
-<article class="ev" style="--g:radial-gradient(circle at 70% 30%,#8a6a3a,transparent 55%),linear-gradient(#2a2016,#0d0907)"><small>Dec 12, 2026 · Riyadh</small><h3>Private Dinner</h3><small>Limited seating</small></article>
-<article class="ev" style="--g:radial-gradient(circle at 30% 30%,#6a4a5a,transparent 55%),linear-gradient(#1e1519,#0b0809)"><small>Dec 19, 2026 · Riyadh</small><h3>Special DJ Set</h3><small>Members and one guest</small></article>
+<article class="ev" data-ev="1" role="button" tabindex="0" style="--g:radial-gradient(circle at 50% 20%,#9a4a2a,transparent 50%),linear-gradient(#2a1410,#0d0706)"><small>Dec 5, 2026 · Riyadh</small><h3>Live Music Night</h3><small>Open to approved members</small></article>
+<article class="ev" data-ev="2" role="button" tabindex="0" style="--g:radial-gradient(circle at 70% 30%,#8a6a3a,transparent 55%),linear-gradient(#2a2016,#0d0907)"><small>Dec 12, 2026 · Riyadh</small><h3>Private Dinner</h3><small>Limited seating</small></article>
+<article class="ev" data-ev="3" role="button" tabindex="0" style="--g:radial-gradient(circle at 30% 30%,#6a4a5a,transparent 55%),linear-gradient(#1e1519,#0b0809)"><small>Dec 19, 2026 · Riyadh</small><h3>Special DJ Set</h3><small>Members and one guest</small></article>
 </div></section>
 
 <section class="s" id="privacy" style="border-top:1px solid var(--line)">
@@ -128,88 +151,148 @@ input.bad,select.bad{border-color:var(--err)}
 <div class="pc"><h3>Controlled access</h3><p>Only authorized reviewers can see applications.</p></div>
 <div class="pc"><h3>Member identity</h3><p>A digital card with secure QR verification, issued after approval.</p></div>
 </div>
-<div class="choices"><h3 style="font-size:1.5rem">Your choices</h3><p class="note" style="margin:2px 0 8px">You’re in control of your data.</p>
-<div class="choice"><div><b>View your data</b><p>See what information we have about you.</p></div><button class="btn ghost sm" data-toast="Sign in to view your data.">View details</button></div>
-<div class="choice"><div><b>Manage your consent</b><p>Update your preferences any time.</p></div><button class="btn ghost sm" data-toast="Sign in to update your consent.">Update</button></div>
-<div class="choice"><div><b>Request deletion</b><p>Ask us to delete your data, subject to legal retention rules.</p></div><button class="btn ghost sm" data-toast="Sign in to request deletion.">Delete my data</button></div>
-</div></section>
-<footer>© 2026 Doomzi Night. A private world, by invitation and approval.</footer>
+</section>
+<footer>© 2026 Doomzi Night. A private world, by invitation and approval. <button class="lnk" data-go="admin" type="button">Admin</button></footer>
 </div>
 </div>
 
-<div id="apply" hidden>
-<div class="wrap">
+<div id="apply" hidden><div class="wrap">
 <nav><button class="logo" data-go="home" aria-label="Back to home">DOOMZI<small>NIGHT</small></button><button class="btn ghost sm" data-go="home">Back to home</button></nav>
 <div class="flow">
-<ol class="steps" id="steps"><li>1. Registration</li><li>2. Payment</li><li>3. Review</li></ol>
-
-<div id="p1"><h2>Create your membership</h2><div class="box">
+<div id="reg"><h2 id="regT">Apply for membership</h2><div class="box">
 <label for="fn">Full name *</label><input type="text" id="fn" autocomplete="name"><p class="err" id="e-fn"></p>
 <label for="age">Age *</label><select id="age"><option value="">Select age</option></select><p class="err" id="e-age"></p>
+<label for="em">Email *</label><input type="text" id="em" autocomplete="email" inputmode="email"><p class="err" id="e-em"></p>
 <label for="ph">Mobile number *</label><div class="phone"><select id="cc" aria-label="Country code"><option>+966</option><option>+971</option><option>+965</option><option>+973</option><option>+974</option></select><input type="tel" id="ph" placeholder="5X XXX XXXX" inputmode="numeric" maxlength="12"></div><p class="err" id="e-ph"></p>
 <label>Profile photo *</label><div class="photo"><div class="pv" id="pv">Photo</div><div><input type="file" id="file" accept="image/png,image/jpeg" hidden><button type="button" class="btn ghost sm" id="up">Upload photo</button><p class="note" style="margin:6px 0 0">JPG or PNG, max 5 MB</p></div></div><p class="err" id="e-file"></p>
-<label>Social accounts (optional)</label><div class="two"><input type="text" placeholder="Instagram @username" aria-label="Instagram"><input type="text" placeholder="X @username" aria-label="X"></div><input type="text" placeholder="TikTok @username" aria-label="TikTok" style="margin-top:10px">
+<label>Social accounts (optional)</label><div class="two"><input type="text" id="s-ig" placeholder="Instagram @username" aria-label="Instagram"><input type="text" id="s-x" placeholder="X @username" aria-label="X"></div><input type="text" id="s-tt" placeholder="TikTok @username" aria-label="TikTok" style="margin-top:10px">
 <label class="check"><input type="checkbox" id="ok"><span>I agree to the Terms and Privacy Policy. I understand why my photo and details are collected, how long they are kept, and who can view them.</span></label><p class="err" id="e-ok"></p>
-<button class="btn full" id="to2" type="button">Continue to payment</button></div></div>
-
-<div id="p2" hidden><h2>Membership payment</h2><div class="box">
-<div role="radiogroup" aria-label="Membership type" id="plans">
-<button type="button" class="opt" role="radio" data-p="1500" data-n="Annual membership" aria-checked="true"><span><b>Annual membership</b><small>Full access to all Doomzi Night events for 12 months.</small></span><b>SAR 1,500</b></button>
-<button type="button" class="opt" role="radio" data-p="750" data-n="Event access (limited)" aria-checked="false"><span><b>Event access (limited)</b><small>Access to upcoming private events.</small></span><b>SAR 750</b></button></div>
-<label>Payment method</label><div class="methods" role="radiogroup" aria-label="Payment method" id="meth"><button type="button" class="m" role="radio" aria-checked="true">Card</button><button type="button" class="m" role="radio" aria-checked="false">Apple Pay</button><button type="button" class="m" role="radio" aria-checked="false">mada</button></div>
-<p class="note">You’ll pay on your payment provider’s secure page. Card details never touch this site. No payment is taken in this demo.</p>
-<button class="btn full" id="pay" type="button">Pay SAR 1,500</button>
-<button class="btn ghost full" id="back1" type="button" style="margin-top:10px">Back</button></div></div>
-
-<div id="p3" hidden class="center"><div class="box">
-<div id="rev"><h2 style="font-size:1.9rem">Your application is under review</h2><p class="note" style="font-size:.95rem">We’re reviewing your information and will notify you of the result soon.</p>
-<ul class="tl" style="text-align:left"><li class="done"><i></i><div><b>Application received</b><small id="rd"></small></div></li><li class="now"><i></i><div><b>Under review</b><small>In progress</small></div></li><li><i></i><div><b>Approved or declined</b><small>Pending</small></div></li></ul>
-<button class="btn ghost full" id="demo" type="button">Demo: preview approval</button></div>
-<div id="appr" hidden><h2 style="font-size:1.9rem">Membership approved</h2><p class="note" style="font-size:.95rem">Welcome to Doomzi Night. Your membership has been activated.</p>
-<div class="mc"><div><div class="logo">DOOMZI<small>NIGHT</small></div><p style="margin-top:34px" id="mid"></p><p id="mval"></p></div><div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end"><span class="badge">MEMBER</span><svg id="qr" viewBox="0 0 21 21" shape-rendering="crispEdges" role="img" aria-label="Membership QR code"></svg></div></div>
-<button class="btn full" data-toast="Card download is available on the live site." type="button">Download membership card</button>
-<button class="btn ghost full" data-go="home" type="button" style="margin-top:10px">Back to home</button></div>
-</div></div>
+<button class="btn full" id="sub" type="button">Submit application</button></div>
+<p class="note center">Already applied? <button class="lnk" id="chk" type="button">Check your status</button></p>
+<div class="box" id="trk" hidden><label for="tr">Application reference</label><input type="text" id="tr" placeholder="DN-12345"><label for="tp">Mobile number</label><input type="tel" id="tp" inputmode="numeric"><p class="err" id="e-tr"></p><button class="btn full" id="tg" type="button">Check status</button></div></div>
+<div id="stat" hidden class="center"><div class="box" id="sb"></div></div>
 </div></div></div>
+
+<div id="admin" hidden><div class="wrap">
+<nav><button class="logo" data-go="home" aria-label="Back to home">DOOMZI<small>NIGHT</small></button><span><button class="btn ghost sm" id="alo" hidden>Log out</button> <button class="btn ghost sm" data-go="home">Back to home</button></span></nav>
+<div id="alogin" class="flow"><h2>Admin login</h2><div class="box">
+<label for="au">Username</label><input type="text" id="au" autocomplete="username"><label for="ap">Password</label><input type="password" id="ap" autocomplete="current-password" style="width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px"><p class="err" id="e-au"></p>
+<button class="btn full" id="lg" type="button">Log in</button>
+<p class="note">Demo login: admin / doomzi2026. This demo keeps data in this browser only, so open the application and the admin page in the same browser.</p></div></div>
+<div id="adash" class="wide" hidden></div>
+</div></div>
+
+<div id="event" hidden>
+<div class="wrap">
+<nav><button class="logo" data-go="home" aria-label="Doomzi Night home">DOOMZI<small>NIGHT</small></button><button class="btn ghost sm" id="bk">Back to events</button></nav>
+<div class="eh" id="eh"><div class="eyebrow" style="color:#c9a67a">Members-only event</div><h1 id="et"></h1><p id="ed"></p></div>
+<div class="facts"><div class="fact"><small>Date</small><b id="f-date"></b></div><div class="fact"><small>Time</small><b id="f-time"></b></div><div class="fact"><small>Location</small><b id="f-loc"></b></div><div class="fact"><small>Dress code</small><b id="f-dress"></b></div></div>
+<div class="evbody"><h2 class="t" style="font-size:1.8rem;margin-bottom:10px">About this night</h2><p id="e-about"></p><p id="e-acc"></p>
+<button class="btn" data-go="apply" type="button" style="margin-top:8px">Apply for membership</button></div>
+</div></div>
 
 <div class="toast" id="toast" hidden role="status"></div>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
 var st={price:1500,plan:"Annual membership",photo:false};
-function show(v){$("home").hidden=v!=="home";$("apply").hidden=v!=="apply";window.scrollTo(0,0);if(v==="apply")step(1)}
+function show(v){["home","apply","event","admin"].forEach(function(i){$(i).hidden=i!==v});window.scrollTo(0,0);if(v==="apply")route();if(v==="admin")adminOpen()}
 document.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){show(b.dataset.go)}});
 var tt;function toast(m){var t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
 document.querySelectorAll("[data-toast]").forEach(function(b){b.onclick=function(){toast(b.dataset.toast)}});
-var a=$("age");for(var i=18;i<=70;i++){var o=document.createElement("option");o.textContent=i;o.value=i;a.appendChild(o)}
-function step(n){["p1","p2","p3"].forEach(function(p,i){$(p).hidden=i!==n-1});
-document.querySelectorAll("#steps li").forEach(function(l,i){l.className=i<n?"on":""});window.scrollTo(0,0)}
+var EV={
+"1":{t:"Live Music Night",d:"Saturday, December 5, 2026",tm:"9:00 PM to 1:00 AM (doors 8:30 PM)",dress:"Smart elegant",about:"An intimate live set in a candle-lit private lounge, with a curated lineup and a limited guest list.",acc:"Open to approved members. Your digital card is checked at the door."},
+"2":{t:"Private Dinner",d:"Saturday, December 12, 2026",tm:"8:00 PM to 11:30 PM (arrival 7:30 PM)",dress:"Formal",about:"A seated multi-course dinner at a shared table, hosted for a small circle of members.",acc:"Seating is limited. Approved members can reserve one seat each."},
+"3":{t:"Special DJ Set",d:"Saturday, December 19, 2026",tm:"10:00 PM to 2:00 AM (doors 9:30 PM)",dress:"Smart casual",about:"A late-night DJ set with a guest artist, in a private room built for dancing and conversation.",acc:"Members may bring one approved guest. Your digital card is checked at the door."}};
+function openEv(c){var e=EV[c.dataset.ev];$("eh").style.setProperty("--g",c.style.getPropertyValue("--g"));
+$("et").textContent=e.t;$("ed").textContent=e.d+" · Riyadh";$("f-date").textContent=e.d;$("f-time").textContent=e.tm;
+$("f-loc").textContent="Riyadh (venue shared with approved members)";$("f-dress").textContent=e.dress;$("e-about").textContent=e.about;$("e-acc").textContent=e.acc;show("event")}
+document.querySelectorAll(".ev[data-ev]").forEach(function(c){c.onclick=function(){openEv(c)};c.onkeydown=function(k){if(k.key==="Enter"||k.key===" "){k.preventDefault();openEv(c)}}});
+$("bk").onclick=function(){show("home");var el=$("events");if(el)el.scrollIntoView()};
+function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+var fmt=function(t){return new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
+function er(id,f,m){var e=$(id);if(e)e.textContent=m||"";var el=f&&$(f);if(el)el.classList.toggle("bad",!!m);return !m}
+var mem=null,meId=null;try{meId=localStorage.getItem("dn_me")}catch(e){}
+function db(){if(!mem){try{mem=JSON.parse(localStorage.getItem("dn_db"))}catch(e){}if(!mem||!mem.apps)mem={apps:[],out:[]}}return mem}
+function sv(){try{localStorage.setItem("dn_db",JSON.stringify(mem))}catch(e){toast("Browser storage is blocked, so data won’t be kept.")}}
+function setMe(i){meId=i;try{if(i)localStorage.setItem("dn_me",i);else localStorage.removeItem("dn_me")}catch(e){}}
+function getApp(i){return i?db().apps.filter(function(a){return a.id===i})[0]:null}
+function notify(a,k){var f=a.name.split(" ")[0],tx={
+approved:"Doomzi Night: Good news, "+f+". Your application is approved. Open Join now and pay your membership fee to receive your digital card.",
+rejected:"Doomzi Night: Your application was not approved. Reason: "+a.reason+" Open Join now, update your application and resubmit.",
+paid:"Doomzi Night: Payment received. Your digital membership card is ready in Join now."}[k];
+var d=db();[["SMS",a.cc+" "+a.ph],["Email",a.email]].forEach(function(c){d.out.unshift({appId:a.id,ch:c[0],to:c[1],text:tx,at:Date.now()})});sv()}
+var ag=$("age");for(var i=18;i<=70;i++){var o=document.createElement("option");o.textContent=i;o.value=i;ag.appendChild(o)}
+var ph0={photo:null,edit:null};
+function setPv(u){var p=$("pv");p.style.backgroundImage=u?"url("+u+")":"";p.textContent=u?"":"Photo"}
+function toThumb(f,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas");c.width=c.height=200;var s=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,200,200);cb(c.toDataURL("image/jpeg",.75))};im.onerror=function(){cb(null)};im.src=r.result};r.readAsDataURL(f)}
 $("up").onclick=function(){$("file").click()};
 $("file").onchange=function(e){var f=e.target.files[0];if(!f)return;
-if(!/^image\/(png|jpeg)$/.test(f.type)||f.size>5242880){st.photo=false;$("pv").style.backgroundImage="";$("pv").textContent="Photo";return er("e-file","file","Use a JPG or PNG under 5 MB.")}
-var r=new FileReader();r.onload=function(){$("pv").style.backgroundImage="url("+r.result+")";$("pv").textContent="";st.photo=true;er("e-file","file","")};r.readAsDataURL(f)};
-function er(id,f,m){$(id).textContent=m||"";var el=$(f);if(el)el.classList.toggle("bad",!!m);return !m}
-$("to2").onclick=function(){var ok=true;
+if(!/^image\/(png|jpeg)$/.test(f.type)||f.size>5242880){ph0.photo=null;setPv(null);return er("e-file","file","Use a JPG or PNG under 5 MB.")}
+toThumb(f,function(u){ph0.photo=u;setPv(u);er("e-file","file",u?"":"Could not read this image.")})};
+function showReg(){ph0={photo:null,edit:null};["fn","em","ph","s-ig","s-x","s-tt"].forEach(function(i){$(i).value=""});$("age").value="";$("ok").checked=false;setPv(null);
+["e-fn","e-age","e-em","e-ph","e-file","e-ok"].forEach(function(i){er(i)});$("sub").textContent="Submit application";$("regT").textContent="Apply for membership";$("reg").hidden=false;$("stat").hidden=true}
+function editApp(a){showReg();ph0={photo:a.photo,edit:a.id};$("fn").value=a.name;$("age").value=a.age;$("em").value=a.email;$("cc").value=a.cc;$("ph").value=a.ph;$("s-ig").value=a.ig||"";$("s-x").value=a.x||"";$("s-tt").value=a.tt||"";$("ok").checked=true;setPv(a.photo);$("sub").textContent="Resubmit application";$("regT").textContent="Update your application"}
+$("sub").onclick=function(){var ok=true,em=$("em").value.trim();
 ok=er("e-fn","fn",$("fn").value.trim().length<2?"Enter your full name.":"")&&ok;
 ok=er("e-age","age",$("age").value?"":"Select your age.")&&ok;
+ok=er("e-em","em",/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)?"":"Enter a valid email, like you@example.com.")&&ok;
 ok=er("e-ph","ph",/^\d{8,10}$/.test($("ph").value.replace(/\s/g,""))?"":"Enter a valid mobile number.")&&ok;
-if(!st.photo)ok=er("e-file","file","Upload a profile photo.")&&ok;
+ok=er("e-file","file",ph0.photo?"":"Upload a profile photo.")&&ok;
 ok=er("e-ok",null,$("ok").checked?"":"Accept the terms to continue.")&&ok;
-if(ok)step(2)};
-document.querySelectorAll("#plans .opt").forEach(function(b){b.onclick=function(){document.querySelectorAll("#plans .opt").forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true");st.price=+b.dataset.p;st.plan=b.dataset.n;$("pay").textContent="Pay SAR "+st.price.toLocaleString("en-US")}});
-document.querySelectorAll("#meth .m").forEach(function(b){b.onclick=function(){document.querySelectorAll("#meth .m").forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true")}});
-$("back1").onclick=function(){step(1)};
-var fmt=function(d){return d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
-$("pay").onclick=function(){$("rd").textContent=fmt(new Date());$("rev").hidden=false;$("appr").hidden=true;step(3)};
-function qr(seed){var s=$("qr"),h="",x=seed;function rnd(){x=(x*1664525+1013904223)>>>0;return x/4294967296}
-function fin(ox,oy){return (ox<7&&oy<7)||(ox>13&&oy<7)||(ox<7&&oy>13)}
-for(var y=0;y<21;y++)for(var c=0;c<21;c++){var on;
-if(fin(c,y)){var fx=c>13?c-14:c,fy=y>13?y-14:y;on=fx===0||fx===6||fy===0||fy===6||(fx>=2&&fx<=4&&fy>=2&&fy<=4)}
-else if((c===7||y===7||c===13&&y<8||y===13&&c<8)&&0)on=false;else on=rnd()>.5;
-if(on)h+='<rect x="'+c+'" y="'+y+'" width="1" height="1" fill="#160f0d"/>'}s.innerHTML=h}
-$("demo").onclick=function(){var n=Math.floor(100+Math.random()*900),d=new Date();d.setFullYear(d.getFullYear()+(st.price===1500?1:0));
-if(st.price!==1500)d.setMonth(d.getMonth()+3);
-$("mid").textContent="ID: DN-00"+n;$("mval").textContent="Valid until: "+fmt(d);qr(n*7919);$("rev").hidden=true;$("appr").hidden=false;window.scrollTo(0,0)};
+if(!ok)return;var d=db(),v={name:$("fn").value.trim(),age:$("age").value,email:em,cc:$("cc").value,ph:$("ph").value.replace(/\s/g,""),photo:ph0.photo,ig:$("s-ig").value.trim(),x:$("s-x").value.trim(),tt:$("s-tt").value.trim()},a;
+if(ph0.edit){a=getApp(ph0.edit);Object.keys(v).forEach(function(k){a[k]=v[k]});a.status="pending";a.reason="";a.again=true;a.at=Date.now()}
+else{a=v;a.id="DN-"+Math.floor(10000+Math.random()*90000);a.status="pending";a.at=Date.now();d.apps.unshift(a)}
+sv();setMe(a.id);window.scrollTo(0,0);renderStat()};
+$("chk").onclick=function(){$("trk").hidden=!$("trk").hidden};
+$("tg").onclick=function(){var r=$("tr").value.trim().toUpperCase(),p=$("tp").value.replace(/\D/g,""),a=getApp(r);
+if(!a||a.ph.replace(/\D/g,"")!==p)return er("e-tr",null,"No application matches that reference and mobile number in this browser.");er("e-tr");setMe(a.id);renderStat()};
+var PL=[["Annual membership",1500,"Full access to all Doomzi Night events for 12 months."],["Event access (limited)",750,"Access to upcoming private events."]];
+function tl(a){var L=["Application received","Admin review","Decision","Payment","Digital card"],ix={pending:1,rejected:3,approved:3,paid:5}[a.status];
+if(a.status==="rejected"){L=L.slice(0,3);L[2]="Not approved"}
+return '<ul class="tl" style="text-align:left">'+L.map(function(t,i){return '<li class="'+(i<ix?"done":i===ix?"now":"")+'"><i></i><div><b>'+t+'</b>'+(i===0?'<small>'+fmt(a.at)+'</small>':'')+'</div></li>'}).join("")+'</ul>'}
+function msgs(a){var m=db().out.filter(function(o){return o.appId===a.id}).slice(0,4);if(!m.length)return "";
+return '<h3 class="mh">Messages sent to you (demo)</h3>'+m.map(function(o){return '<div class="msg"><small>'+o.ch+' to '+esc(o.to)+' · '+fmt(o.at)+'</small>'+esc(o.text)+'</div>'}).join("")}
+function qrS(seed){var x=seed,h="";function r(){x=(x*1664525+1013904223)>>>0;return x/4294967296}
+for(var y=0;y<21;y++)for(var c=0;c<21;c++){var on,f=(c<7&&y<7)||(c>13&&y<7)||(c<7&&y>13);
+if(f){var fx=c>13?c-14:c,fy=y>13?y-14:y;on=fx===0||fx===6||fy===0||fy===6||(fx>=2&&fx<=4&&fy>=2&&fy<=4)}else on=r()>.5;
+if(on)h+='<rect x="'+c+'" y="'+y+'" width="1" height="1" fill="#160f0d"/>'}
+return '<svg viewBox="0 0 21 21" shape-rendering="crispEdges" role="img" aria-label="Membership QR code">'+h+'</svg>'}
+function renderStat(){var a=getApp(meId);if(!a){setMe(null);return showReg()}
+$("reg").hidden=true;$("stat").hidden=false;var h="",st=a.status,H='<h2 style="font-size:1.8rem">';
+if(st==="pending")h=H+(a.again?'Your updated application is under review':'Your application is under review')+'</h2><p class="note" style="font-size:.95rem">Reference '+a.id+'. We’ll notify you by SMS and email when the admin has decided.</p>'+tl(a);
+else if(st==="rejected")h=H+'Application not approved</h2><div class="msg bad"><small>Reason from the admin</small>'+esc(a.reason)+'</div><p class="note" style="font-size:.95rem">You can update your details and resubmit, or leave it as it is.</p>'+tl(a)+'<button class="btn full" id="edt" type="button">Edit and resubmit</button>';
+else if(st==="approved")h=H+'Application approved</h2><p class="note" style="font-size:.95rem">Choose your membership and pay the fee to receive your digital card.</p>'+tl(a)+'<div role="radiogroup" aria-label="Membership type" style="text-align:left">'+PL.map(function(p,i){return '<button type="button" class="opt" role="radio" data-i="'+i+'" aria-checked="'+(i===0)+'"><span><b>'+p[0]+'</b><small>'+p[2]+'</small></span><b>SAR '+p[1].toLocaleString("en-US")+'</b></button>'}).join("")+'</div><div class="methods" role="radiogroup" aria-label="Payment method" id="meth"><button type="button" class="m" role="radio" aria-checked="true">Card</button><button type="button" class="m" role="radio" aria-checked="false">Apple Pay</button><button type="button" class="m" role="radio" aria-checked="false">mada</button></div><p class="note">You’d pay on your payment provider’s secure page. No payment is taken in this demo.</p><button class="btn full" id="pay" type="button">Pay SAR 1,500</button>';
+else h=H+'Membership active</h2><p class="note" style="font-size:.95rem">Welcome to Doomzi Night, '+esc(a.name.split(" ")[0])+'.</p><div class="mc"><div><div class="logo">DOOMZI<small>NIGHT</small></div><p style="margin-top:30px">'+esc(a.name)+'</p><p>ID: '+a.memberId+'</p><p>Valid until: '+fmt(a.until)+'</p></div><div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end"><span class="badge">MEMBER</span>'+qrS(parseInt(a.id.slice(3),10)*7919)+'</div></div><button class="btn full" id="dl" type="button">Download membership card</button>';
+$("sb").innerHTML=h+msgs(a)+'<p class="note center" style="margin-top:20px"><button class="lnk" id="nw" type="button">Start a new application</button></p>';
+var e=$("edt");if(e)e.onclick=function(){editApp(a)};
+var ps=document.querySelectorAll("#sb .opt"),sel=0;ps.forEach(function(b){b.onclick=function(){ps.forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true");sel=+b.dataset.i;$("pay").textContent="Pay SAR "+PL[sel][1].toLocaleString("en-US")}});
+var ms=document.querySelectorAll("#meth .m");ms.forEach(function(b){b.onclick=function(){ms.forEach(function(x){x.setAttribute("aria-checked","false")});b.setAttribute("aria-checked","true")}});
+e=$("pay");if(e)e.onclick=function(){var u=new Date();if(sel===0)u.setFullYear(u.getFullYear()+1);else u.setMonth(u.getMonth()+3);a.plan=PL[sel][0];a.paid=PL[sel][1];a.memberId="DN-00"+Math.floor(100+Math.random()*900);a.until=u.getTime();a.status="paid";notify(a,"paid");sv();window.scrollTo(0,0);renderStat()};
+e=$("dl");if(e)e.onclick=function(){toast("Card download is available on the live site.")};
+$("nw").onclick=function(){setMe(null);showReg()}}
+function route(){if(getApp(meId))renderStat();else{setMe(null);showReg()}}
+/* admin */
+var adm={on:false,tab:"apps",f:"pending",rej:null};
+function admShow(){$("alogin").hidden=adm.on;$("adash").hidden=!adm.on;$("alo").hidden=!adm.on;if(adm.on)admR()}
+function adminOpen(){adm.rej=null;admShow()}
+$("lg").onclick=function(){if($("au").value.trim()==="admin"&&$("ap").value==="doomzi2026"){adm.on=true;$("ap").value="";er("e-au");admShow()}else er("e-au",null,"Wrong username or password.")};
+$("alo").onclick=function(){adm.on=false;admShow()};
+function admR(){var d=db(),cnt=function(s){return d.apps.filter(function(a){return s==="all"||a.status===s}).length};
+var h='<h2 class="serif" style="font-size:2.2rem;margin-bottom:4px">Applications</h2><div class="tabs">'+[["apps","Applications"],["out","Notifications ("+d.out.length+")"]].map(function(t){return '<button data-tab="'+t[0]+'" aria-pressed="'+(adm.tab===t[0])+'">'+t[1]+'</button>'}).join("")+'</div>';
+if(adm.tab==="out"){h+=d.out.length?d.out.map(function(o){return '<div class="msg"><small>'+o.ch+' to '+esc(o.to)+' · '+fmt(o.at)+' · '+o.appId+'</small>'+esc(o.text)+'</div>'}).join(""):'<p class="note">No notifications sent yet.</p>'}
+else{h+='<div class="tabs">'+["pending","approved","rejected","paid","all"].map(function(s){return '<button data-f="'+s+'" aria-pressed="'+(adm.f===s)+'">'+s.charAt(0).toUpperCase()+s.slice(1)+' ('+cnt(s)+')</button>'}).join("")+'</div>';
+var L=d.apps.filter(function(a){return adm.f==="all"||a.status===adm.f});
+h+=L.length?L.map(function(a){return '<div class="acard"><div class="ah"><div class="av" style="background-image:url('+(a.photo||"")+')"></div><div><b>'+esc(a.name)+'</b><span class="pill s-'+a.status+'">'+a.status+(a.again&&a.status==="pending"?" (resubmitted)":"")+'</span><br><small>'+a.id+' · Age '+esc(a.age)+' · '+esc(a.cc)+' '+esc(a.ph)+' · '+esc(a.email)+'</small><br><small>Instagram '+esc(a.ig||"-")+' · X '+esc(a.x||"-")+' · TikTok '+esc(a.tt||"-")+'</small><br><small>Submitted '+fmt(a.at)+'</small></div></div>'
++(a.status==="rejected"?'<div class="msg bad"><small>Rejection reason sent</small>'+esc(a.reason)+'</div>':'')
++(a.status==="pending"?(adm.rej===a.id?'<textarea id="rt" placeholder="Reason sent to the applicant (required)" aria-label="Rejection reason"></textarea><p class="err" id="e-rt"></p><div class="acts"><button class="btn sm" data-sr="'+a.id+'">Send rejection</button><button class="btn ghost sm" data-cx="1">Cancel</button></div>':'<div class="acts"><button class="btn sm" data-ap="'+a.id+'">Approve</button><button class="btn ghost sm" data-rj="'+a.id+'">Reject</button></div>'):'')+'</div>'}).join(""):'<p class="note">No applications here yet.</p>'}
+$("adash").innerHTML=h}
+$("adash").onclick=function(e){var t=e.target,d=t.dataset,a;if(!d)return;
+if(d.tab){adm.tab=d.tab;adm.rej=null}else if(d.f){adm.f=d.f;adm.rej=null}
+else if(d.rj)adm.rej=d.rj;else if(d.cx)adm.rej=null;
+else if(d.ap){a=getApp(d.ap);a.status="approved";notify(a,"approved");toast("Approved. SMS and email sent to "+a.name.split(" ")[0]+".")}
+else if(d.sr){var r=$("rt").value.trim();if(r.length<5)return er("e-rt","rt","Write a reason of at least 5 characters.");a=getApp(d.sr);a.status="rejected";a.reason=r;adm.rej=null;notify(a,"rejected");toast("Rejected. SMS and email sent with the reason.")}
+else return;sv();admR()};
 })();
 </script>
 </body>
